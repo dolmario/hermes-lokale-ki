@@ -1,0 +1,79 @@
+{
+  "kind_a": {
+    "context_per_slot": 43690.666666666664,
+    "context_sufficient": true,
+    "used_evidence_ids": ["A1", "A2", "A4"],
+    "ignored_draft_ids": ["A3"],
+    "evidence": [
+      {
+        "id": "A1",
+        "file": "fixtures/teil-a.json",
+        "line": 4,
+        "quote": "{\"id\": \"A1\", \"status\": \"freigegeben\", \"server_ctx\": 131072, \"slots\": 3}",
+        "finding": "server_ctx = 131072, slots = 3 (freigegeben)"
+      },
+      {
+        "id": "A2",
+        "file": "fixtures/teil-a.json",
+        "line": 5,
+        "quote": "{\"id\": \"A2\", \"status\": \"freigegeben\", \"required_ctx_per_request\": 40000}",
+        "finding": "required_ctx_per_request = 40000 (freigegeben)"
+      },
+      {
+        "id": "A4",
+        "file": "fixtures/teil-a.json",
+        "line": 7,
+        "quote": "{\"id\": \"A4\", \"status\": \"freigegeben\", \"regel\": \"server_ctx wird gleichmaessig auf slots geteilt\"}",
+        "finding": "Regel: server_ctx wird gleichmaessig auf slots geteilt (freigegeben)"
+      }
+    ],
+    "calculation": "131072 / 3 = 43690.666... Token pro Slot (A1, A4); 43690.67 >= 40000 (A2) => Kontext ausreichend"
+  },
+  "kind_b": {
+    "queue_order": ["beta", "gamma", "alpha"],
+    "used_evidence_ids": ["B1", "B2", "B3", "B4"],
+    "ignored_evidence_ids": ["B5"],
+    "evidence": [
+      {
+        "id": "B1",
+        "file": "fixtures/teil-b.json",
+        "line": 4,
+        "quote": "{\"id\": \"B1\", \"status\": \"freigegeben\", \"name\": \"alpha\", \"priority\": 20, \"sequence\": 2}",
+        "finding": "alpha ist freigegeben mit priority 20 und sequence 2."
+      },
+      {
+        "id": "B2",
+        "file": "fixtures/teil-b.json",
+        "line": 5,
+        "quote": "{\"id\": \"B2\", \"status\": \"freigegeben\", \"name\": \"beta\", \"priority\": 10, \"sequence\": 1}",
+        "finding": "beta ist freigegeben mit priority 10 und sequence 1."
+      },
+      {
+        "id": "B3",
+        "file": "fixtures/teil-b.json",
+        "line": 6,
+        "quote": "{\"id\": \"B3\", \"status\": \"freigegeben\", \"name\": \"gamma\", \"priority\": 20, \"sequence\": 1}",
+        "finding": "gamma ist freigegeben mit priority 20 und sequence 1."
+      },
+      {
+        "id": "B4",
+        "file": "fixtures/teil-b.json",
+        "line": 7,
+        "quote": "{\"id\": \"B4\", \"status\": \"freigegeben\", \"regel\": \"kleinere priority zuerst, danach kleinere sequence\"}",
+        "finding": "Sortierregel: zuerst aufsteigend nach priority, dann aufsteigend nach sequence."
+      },
+      {
+        "id": "B5",
+        "file": "fixtures/teil-b.json",
+        "line": 8,
+        "quote": "{\"id\": \"B5\", \"status\": \"verworfen\", \"name\": \"delta\", \"priority\": 1, \"sequence\": 1}",
+        "finding": "delta ist verworfen und wird ignoriert."
+      }
+    ],
+    "derivation": "Nach B4 sortiert man die freigegebenen Einträge B1 (alpha, 20/2), B2 (beta, 10/1) und B3 (gamma, 20/1) zuerst nach priority aufsteigend, dann nach sequence aufsteigend: beta (10) zuerst, dann gamma (20, sequence 1) vor alpha (20, sequence 2). Ergebnis: beta, gamma, alpha."
+  },
+  "children_started": 2,
+  "children_completed": 2,
+  "conflicts": [],
+  "verdict": "PASS - Alle Erwartungen aus AUFTRAG.md erfüllt: context_per_slot = 43690.67 (≈ 43.690 Token je Slot), context_sufficient = true, Queue-Reihenfolge beta, gamma, alpha, 2 gestartete und 2 abgeschlossene Kinder, keine Konflikte. Beide Kinder haben ihre Belege mit Dateipfad, Zeilennummer und wörtlichem Zitat dokumentiert; die Elternsynthese basiert ausschließlich auf den beiden Ergebnisdateien kind-a.json und kind-b.json."
+}

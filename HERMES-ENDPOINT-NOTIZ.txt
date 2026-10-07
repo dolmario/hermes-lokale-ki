@@ -1,0 +1,4 @@
+Example only: custom OpenAI-compatible base URL http://127.0.0.1:8090/v1
+Model ID: replace with actual existing endpoint ID
+Context: confirm actual server supports >=64000; no automatic model change
+Auxiliary provider routes and fallbacks must be inspected separately
