@@ -1,0 +1,37 @@
+{
+  "archived_date": "2026-09-19",
+  "own_synthetic_input_and_outputs": true,
+  "preserved_sources": [
+    {
+      "source": "C:\\Users\\JT\\Desktop\\llm-server\\harness-abnahme-20260919\\fixtures\\teil-a.json",
+      "path": "fixtures/teil-a.json",
+      "sha256": "fcb7aba084f14c8f36eccf7494bf83958c7f5ed07a4a3de16b19880c4396147a"
+    },
+    {
+      "source": "C:\\Users\\JT\\Desktop\\llm-server\\harness-abnahme-20260919\\fixtures\\teil-b.json",
+      "path": "fixtures/teil-b.json",
+      "sha256": "246e5693c793f77f932e5a1daa58f77ef8903772ed966556805ec57aa0d5a5e4"
+    },
+    {
+      "source": "C:\\Users\\JT\\Desktop\\llm-server\\harness-abnahme-20260919\\results\\hermes\\q4-final\\kind-a.json",
+      "path": "ARCHIV/kind-a.json",
+      "sha256": "0c0b46fbe3e27ac6d07b8872142e166a177f0ae0c56a7b4739502627301a01d8"
+    },
+    {
+      "source": "C:\\Users\\JT\\Desktop\\llm-server\\harness-abnahme-20260919\\results\\hermes\\q4-final\\kind-b.json",
+      "path": "ARCHIV/kind-b.json",
+      "sha256": "505fff909711d9088cb068acff69ec0e891e4e9db89882e8c690f159fe874f58"
+    },
+    {
+      "source": "C:\\Users\\JT\\Desktop\\llm-server\\harness-abnahme-20260919\\results\\hermes\\q4-final\\synthese.json",
+      "path": "ARCHIV/synthese.json",
+      "sha256": "3ae1941e9b497bdf7545cd3c3f4f1ab740be9cdf7d725de320048c8e1f57352b"
+    }
+  ],
+  "new_agent_run": false,
+  "new_exercise_requires_integer_floor": true,
+  "archived_context_value": 43690.666666666664,
+  "archived_profile": "own q4-orchestrator; not a built-in default",
+  "child_count_is_recorded_in_archive_not_independently_replayed": true,
+  "new_checker_is_not_an_exact_reproduction_of_the_old_output_schema": true
+}
